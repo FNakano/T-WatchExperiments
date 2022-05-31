@@ -12,6 +12,15 @@ My intention is to document and reference experiences/experiments programming TT
 - TTGO T-Watch Library with (default) LVGL vers. 7.4
 - ESP32 board Arduino Library vers. 1.0.6
 
+## Comparing examples
+
+|  | Batman Dial | LilyGoGUI | Simple Watch | Markus Wobish | Dan Geiger |
+| --- | --- | --- | --- | --- | --- |
+| Uses FreeRTOS | --- | --- | --- | --- | --- |
+| Uses LVGL | --- | --- | --- | --- | --- |
+| Uses LVGL Styles | --- | --- | --- | --- | --- |
+
+
 ## Conclusions
 
 ### Difference between .INO .C and .CPP in multifile sketches in Arduino IDE - ESP32
