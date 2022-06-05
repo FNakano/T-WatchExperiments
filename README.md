@@ -38,6 +38,10 @@ My intention is to document and reference experiences/experiments programming TT
 1. Explore examples
 1. Create a watch that gets time/date from NTP;
 2. Test battery duration, use deep sleep, disable display, sensors, use touch wake up.
+   - one charge lasted 6.5 days with remaining 7% battery running `MyLvglWatch-20220529-e`;
+   - temperature has influence on battery charge readings (desk (approx. 15C) X wrist => 7% => 8%);
+   - seems more sensitive to screen brightness than CPU frequency;
+      - curious to try out brightness=10, CPUFreq=10 (was brightness=20, CPUFreq=20)
 3. Create a watch with (exactly) two screens;
 4. (Re)Factor code in order to facilitate project extensions (more screens, more features, ...)
    - LVGL functions expect **C** function pointers as parameters. AFAIK, OOP (**C++**) member functions can not be (re)cast as C function pointers. This might discourage the use of OOP;
@@ -64,10 +68,13 @@ graph TD
   MyLvglWatch-20220529-d -->|added header files | MyLvglWatch-20220529-e
   MyLvglWatch-20220529-e -->|added FTP screen| MyLvglWatch-20220602
   esp8266_esp32_SPIFFS -->|FTP Server| MyLvglWatch-20220602
+```
 
+### Status
 
+`MyLvglWatch-20220602` enters guru meditation when attempting to send file to the watch. Same happens with FTP example running alone in T-Watch.
 
-## Conclusions
+## Conclusions by now
 
 ### Difference between .INO .C and .CPP in multifile sketches in Arduino IDE - ESP32
 
