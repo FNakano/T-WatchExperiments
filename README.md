@@ -14,11 +14,24 @@ My intention is to document and reference experiences/experiments programming TT
 
 ## Comparing examples
 
-|  | Batman Dial | LilyGoGUI | Simple Watch | Markus Wobish | Dan Geiger |
-| --- | --- | --- | --- | --- | --- |
-| Uses FreeRTOS | --- | --- | --- | --- | --- |
-| Uses LVGL | --- | --- | --- | --- | --- |
-| Uses LVGL Styles | --- | --- | --- | --- | --- |
+|  | TimeSynchronization | Lvgl_base | Batman Dial | LilyGoGUI | Simple Watch | Dan Geiger (from Instructables - ST-TNG inspired screen) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Display time or date* | YES | No | YES (adjusted through compilation time) | No | YES (adjusted through compilation time) | YES (adjust through compilation time) |
+| Set RTC using NTP | YES | No | No | No | No | No |
+| Connects to WiFi | YES | No | No | No | YES | No |
+| Switches between screens* | No | No | No | No | YES | No |
+| Uses FreeRTOS | No | No | No | No | YES | No |
+| Uses LVGL | No | YES | YES | YES | YES | YES |
+| Uses LVGL Styles | No | No | YES | YES | YES | No |
+| Sets alternative fonts using LVGL | No | No | YES | YES | YES | No |
+| Sets images using LVGL | No | No | YES | YES | YES(T-WATCH pre-compiled images) | No |
+| Attracting feature | Set RTC using NTP, connect to WiFi | Simple use of LVGL | Set display brightness, set CPU clock frequency | One complex screen, many images, many fonts | complex project, One LVGL.screen, many LVGL.containers (Menu, Keyboard), OOP, configure many hardware interrupts (accelerometer, power management), looks careful use of LVGL along side FreeRTOS | Catches touch coordinates directly from tft, draws screen directly to tft. Seems not to use LVGL objects and events. |
+
+*Display time or date* the code gets time from RTC, NTP, local system or other current time source, displays AND updates displayed time.
+
+*Switches between screens* implies that the example is capable of drawing more then one screen: the code redraws the entire display area.  
+
+*NC* means Not Checked.
 
 
 ## Conclusions
@@ -44,6 +57,6 @@ From LVGL 7/8, FreeRTOS is marked as *TODO* https://docs.lvgl.io/master/get-star
 ## References
 
 1. [TTGO T-Watch library](https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library). I downloaded it on 2022 May 6th. There is an interesting commit about faster startup on May 10th. 
-2. [Markus Wobish blogger blog](https://markus-wobisch.blogspot.com/2021/03/lilygo-ttgo-t-watch-2020-getting.html). I first read it circa 2022 May 7th.
-3. [Dan Geiger at Instructables](https://www.instructables.com/Lilygo-T-Watch-2020-Arduino-Framework/). I first read it circa 2022 May 7th.
-4. [LVGL V.7.11 documentation](https://docs.lvgl.io/7.11/). I am consulting it from (circa) 2022 May 12th.
+2. [Markus Wobish blogger blog](https://markus-wobisch.blogspot.com/2021/03/lilygo-ttgo-t-watch-2020-getting.html). I first read it arround 2022 May 7th.
+3. [Dan Geiger at Instructables](https://www.instructables.com/Lilygo-T-Watch-2020-Arduino-Framework/). I first read it arround 2022 May 7th.
+4. [LVGL V.7.11 documentation](https://docs.lvgl.io/7.11/). I am consulting it from arround 2022 May 12th.
