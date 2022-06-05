@@ -14,7 +14,7 @@ My intention is to document and reference experiences/experiments programming TT
 
 ## Comparing examples
 
-|  | TimeSynchronization | Lvgl_base | Batman Dial | LilyGoGUI | Simple Watch | Dan Geiger (from Instructables - ST-TNG inspired screen) |
+|  | Time Synchronization | Lvgl_base | Batman Dial | LilyGoGUI | Simple Watch | Dan Geiger (from Instructables - ST-TNG inspired screen) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Display time or date* | YES | No | YES (adjusted through compilation time) | No | YES (adjusted through compilation time) | YES (adjust through compilation time) |
 | Set RTC using NTP | YES | No | No | No | No | No |
@@ -32,6 +32,39 @@ My intention is to document and reference experiences/experiments programming TT
 *Switches between screens* implies that the example is capable of drawing more then one screen: the code redraws the entire display area.  
 
 *NC* means Not Checked.
+
+## My roadmap
+
+1. Explore examples
+1. Create a watch that gets time/date from NTP;
+2. Test battery duration, use deep sleep, disable display, sensors, use touch wake up.
+3. Create a watch with (exactly) two screens;
+4. (Re)Factor code in order to facilitate project extensions (more screens, more features, ...)
+   - LVGL functions expect **C** function pointers as parameters. AFAIK, OOP (**C++**) member functions can not be (re)cast as C function pointers. This might discourage the use of OOP;
+5. Create a many screens/features watch;
+
+### Examples 
+
+```mermaid
+graph TD
+  TimeSinchronization --> WakeUpFormTouchScreen
+  TouchPanelMode --> WakeUpFormTouchScreen
+  WakeUpFormTouchScreen -->| deep sleep | Lvgl_StdObjWatch
+  LvglButton --> Lvgl_StdObjWatch
+  Lvgl_StdObjWatch --> MyLvglWatch-20220512
+  LilyGoGUI --> MyLvglWatch-20220512
+  MyLvglWatch-20220512 -->|try image button| MyLvglWatch-20220514
+  MyLvglWatch-20220514 -->|refactor source-code| MyLvglWatch-20220525
+  Dan_Geigers -->| inspired source-code structure | MyLvglWatch-20220525
+  BatmanDial -->| screen brightness, CPU freq. control | MyLvglWatch-20220525
+  MyLvglWatch-20220525 -->| second screen, remove image button | MyLvglWatch-20220529
+  SimpleWatch -->| second screen | MyLvglWatch-20220529
+  MyLvglWatch-20220529 -->| refactor to .CPP, try C++ classes | MyLvglWatch-20220529-c
+  MyLvglWatch-20220529-c -->| step back | MyLvglWatch-20220529-d
+  MyLvglWatch-20220529-d -->|added header files | MyLvglWatch-20220529-e
+  MyLvglWatch-20220529-e -->|added FTP screen| MyLvglWatch-20220602
+  esp8266_esp32_SPIFFS -->|FTP Server| MyLvglWatch-20220602
+
 
 
 ## Conclusions
@@ -60,3 +93,4 @@ From LVGL 7/8, FreeRTOS is marked as *TODO* https://docs.lvgl.io/master/get-star
 2. [Markus Wobish blogger blog](https://markus-wobisch.blogspot.com/2021/03/lilygo-ttgo-t-watch-2020-getting.html). I first read it arround 2022 May 7th.
 3. [Dan Geiger at Instructables](https://www.instructables.com/Lilygo-T-Watch-2020-Arduino-Framework/). I first read it arround 2022 May 7th.
 4. [LVGL V.7.11 documentation](https://docs.lvgl.io/7.11/). I am consulting it from arround 2022 May 12th.
+5. [FTP Server for ESP32](https://www.mischianti.org/2020/02/08/ftp-server-on-esp8266-and-esp32)
