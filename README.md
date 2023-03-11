@@ -6,10 +6,14 @@ Hi!
 
 My intention is to document and reference experiences/experiments programming TTGO T-Watch V.3 using Arduino IDE.
 
+Created new versions and documentation in 2022-10. Link: https://mylvglwatch.readthedocs.io/en/latest/index.html. It uses doxygen, sphynx, breathe and exhale. Use this toolchain to document a simple project was, probably, a mistake. Include more experiments and documentation is too painful.
+
+Came back to this repo in 2023-3. 
+
 ## Tools and libraries
 
 - Arduino IDE vers. 1.8.16
-- TTGO T-Watch Library with (default) LVGL vers. 7.4
+- TTGO T-Watch Library with (default) LVGL vers. ~~7.4~~ (in 2020-10 noticed that it was 7.2.?) 
 - ESP32 board Arduino Library vers. 1.0.6
 
 ## Comparing examples
@@ -32,6 +36,20 @@ My intention is to document and reference experiences/experiments programming TT
 *Switches between screens* implies that the example is capable of drawing more then one screen: the code redraws the entire display area.  
 
 *NC* means Not Checked.
+
+(2023-03)
+
+with previous (2022-06) version of the library, `Hardware Test` example did not compile. It misses `AudioFileSourcePROGMEM.h` file.
+
+with previous (2022-06) version of the library, `AXP20x_ChargeCurrent` example shows how to change charge current.
+
+with previous (2022-06) version of the library, `AXP20x_ADC` example indicate that VBUS is USB bus. Program inform if USB is connected, battery is connected, voltages and currents [see watch screenshot](./20230311_124218.jpg). This example was useful to find a faulty USB cable (micro V8 connector worn out) and to find a *bug* in T-Watch battery connector. The connector on the board-side can be bent aside by battery insertion and might not connect to the battery-side connector. This can be corrected by bending the metal blades down and inserting the battery carefully (ensure that electrical connection is ok).
+
+[T-Watch board and battery connectors (both board-side and battery-side) photo](./20230311_124114.jpg)
+
+[Battery insertion and connector bending](./20230311_124050.jpg) In this case the battery is not connected to the board.
+
+Current context: Cloned https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library latest version in 2023-03-11.
 
 ## My roadmap
 
@@ -72,7 +90,7 @@ graph TD
 
 ### Status
 
-`MyLvglWatch-20220602` enters guru meditation when attempting to send file to the watch. Same happens with FTP example running alone in T-Watch.
+`MyLvglWatch-20220602` enters guru meditation when attempting to send file to the watch. Same happens with FTP example running alone in T-Watch. (A solution to file upload/download was found and documented in 2022-10 version. Link: https://mylvglwatch.readthedocs.io/en/latest/index.html )
 
 ## Conclusions by now
 
