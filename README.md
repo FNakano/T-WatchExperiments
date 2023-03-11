@@ -47,7 +47,7 @@ with previous (2022-06) version of the library, `AXP20x_ADC` example indicate th
 
 [T-Watch board and battery connectors (both board-side and battery-side) photo](./20230311_124114.jpg)
 
-[Battery insertion and connector bending](./20230311_124050.jpg) In this case the battery is not connected to the board.
+[Battery insertion and connector bending](./20230311_124050.jpg) In this case the battery, when fully inserted, will not connect to the board.
 
 Current context: Cloned https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library latest version in 2023-03-11.
 
